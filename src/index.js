@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../assets/css/global.sass';
-const App = () => {
-    return (
-        <div>
-            <button className="skeu">JAJA</button>
-        </div>
-    );
+import store from './redux/store';
+import { Provider } from 'react-redux';
+import Navbar from './components/Navbar.js';
+import Window from './components/Window.js';
+
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <Navbar></Navbar>
+                <Window></Window>
+
+            </div>
+        );
+    }
 }
 
 
-ReactDOM.render(<App></App>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App></App></Provider>, document.getElementById('root'));
